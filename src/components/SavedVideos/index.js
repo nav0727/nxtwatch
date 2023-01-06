@@ -6,7 +6,11 @@ import './index.css'
 import NoSaved from '../NoSaved'
 
 class SavedVideos extends Component {
-  state = {savedList: []}
+  state = {savedList: [], isDark: false}
+
+  onSaveList = product => {
+    this.setState(prev => ({savedList: {...prev.savedList, product}}))
+  }
 
   renderSavedList = () => {
     const {savedList} = this.state
@@ -16,10 +20,15 @@ class SavedVideos extends Component {
     )
   }
 
+  toggleTheme = () => {
+    this.setState(prev => ({isDark: !prev.isDark}))
+  }
+
   render() {
+    const {isDark} = this.state
     return (
-      <div className="Home-container">
-        <Header />
+      <div className={isDark ? 'Home-container' : 'light'}>
+        <Header toggleTheme={this.toggleTheme} />
         <div className="row">
           <div>
             <LeftNav />

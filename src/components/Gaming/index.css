@@ -25,3 +25,7 @@
   flex-direction: column;
   height: 90vh;
 }
+.row {
+  display: flex;
+  justify-content: space-between;
+}

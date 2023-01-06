@@ -56,7 +56,7 @@ class VideoPlay extends Component {
 
   render() {
     const {videoPlayList} = this.state
-    console.log(videoPlayList)
+    // console.log(videoPlayList)
     return (
       <div className="Home-container">
         <Header />

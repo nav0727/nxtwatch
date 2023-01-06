@@ -2,7 +2,7 @@ import {React} from 'react'
 
 const NxtContext = React.createContext({
   isDark: false,
-  onToggleTheme: () => {},
+  toggleTheme: () => {},
 })
 
 export default NxtContext

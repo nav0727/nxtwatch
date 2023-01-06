@@ -1,5 +1,6 @@
 import {withRouter} from 'react-router-dom'
 
+import {FaMoon} from 'react-icons/fa'
 import {TiWeatherSunny} from 'react-icons/ti'
 import Cookies from 'js-cookie'
 
@@ -17,6 +18,11 @@ const Header = props => {
     return history.replace(...props)
   }
 
+  const {toggleTheme} = props
+  const changeTheme = () => {
+    toggleTheme()
+  }
+
   return (
     <nav className="header-container">
       <img
@@ -26,8 +32,9 @@ const Header = props => {
       />
 
       <div className="header-items">
-        <button type="button" className="marg bg">
+        <button type="button" className="marg bg" onClick={changeTheme}>
           <TiWeatherSunny className="font" />
+          <FaMoon className="font" />
         </button>
 
         <img

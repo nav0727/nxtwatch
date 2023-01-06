@@ -9,17 +9,22 @@ import './index.css'
 import Videos from '../Video'
 
 class Home extends Component {
-  state = {hide: false}
+  state = {hide: false, isDark: false}
 
   closeBtn = () => {
     this.setState({hide: true})
   }
 
+  toggleTheme = () => {
+    this.setState(prev => ({isDark: !prev.isDark}))
+  }
+
   render() {
-    const {hide} = this.state
+    const {hide, isDark} = this.state
+    console.log(isDark)
     return (
       <div className="Home-container">
-        <Header />
+        <Header toggleTheme={this.toggleTheme} />
         <div className="body-container">
           <div>
             <LeftNav />
@@ -28,7 +33,7 @@ class Home extends Component {
           <div className="body">
             <div className={hide ? 'hide' : 'home-bg-wallpaper'}>
               <div>
-                <div className="row ">
+                <div className="row">
                   <img
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
                     alt="nxt watch"

@@ -15,3 +15,6 @@
 .head-container::-webkit-scrollbar {
   display: none;
 }
+.row {
+  justify-content: space-between;
+}
