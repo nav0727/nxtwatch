@@ -1,0 +1,14 @@
+.thumb-img {
+  height: 260px;
+  width: 210px;
+}
+.mar {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  height: 320px;
+}
+p {
+  font-size: 14px;
+  color: #ff0000;
+}

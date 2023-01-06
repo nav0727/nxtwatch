@@ -1,0 +1,27 @@
+.ul-con {
+  display: flex;
+  flex-wrap: wrap;
+}
+.game {
+  display: flex;
+  align-items: center;
+  padding-left: 5vw;
+  background-color: #181818;
+}
+.bg-dark {
+  color: #ff0000;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #231f20;
+  height: 40px;
+  width: 40px;
+  margin-right: 1vw;
+  border-radius: 20px;
+}
+.col-dir {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}

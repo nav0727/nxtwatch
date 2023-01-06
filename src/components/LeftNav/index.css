@@ -1,0 +1,25 @@
+ul {
+  list-style-type: none;
+}
+li {
+  display: flex;
+  align-items: center;
+}
+.symbol {
+  font-size: 25px;
+}
+.btn-icon {
+  background-color: transparent;
+  border: none;
+}
+.left-container {
+  width: 15vw;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.apps {
+  height: 25px;
+  margin: 5px;
+}

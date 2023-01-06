@@ -1,0 +1,11 @@
+.no-save {
+  height: 200px;
+  width: 300px;
+}
+.no-con {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}

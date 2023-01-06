@@ -1,0 +1,26 @@
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input {
+  background-color: transparent;
+  color: #fff;
+  height: 15px;
+  outline: none;
+  border: none;
+  width: 90%;
+}
+
+.search-container {
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  margin: 10px;
+}
+.search-icon {
+  color: #020202;
+  font-size: 20px;
+}

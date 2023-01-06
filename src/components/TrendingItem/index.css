@@ -1,0 +1,13 @@
+.trend-item {
+  display: flex;
+  justify-content: space-around;
+}
+.list {
+  display: flex;
+  margin: 20px;
+}
+.thumb {
+  height: 150px;
+  width: 250px;
+  margin-right: 15px;
+}

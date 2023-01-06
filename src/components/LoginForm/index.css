@@ -1,0 +1,38 @@
+.login-bg {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  height: 60%;
+  width: 35%;
+  padding: 30px;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.login-btn {
+  width: 100%;
+  margin-top: 3vh;
+  background-color: #3b82f6;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  font-family: 'Roboto';
+}
+
+.nxt-login {
+  width: 60%;
+  align-self: center;
+}

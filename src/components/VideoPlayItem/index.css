@@ -1,0 +1,21 @@
+.row-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1vw;
+}
+.row {
+  display: flex;
+  align-items: center;
+  margin-right: 1vw;
+}
+.cri-logo {
+  height: 50px;
+  align-self: flex-start;
+  justify-content: center;
+  margin-left: 20px;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
