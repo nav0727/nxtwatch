@@ -2,12 +2,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-.game {
-  display: flex;
-  align-items: center;
-  padding-left: 5vw;
-  background-color: #181818;
-}
 .bg-dark {
   color: #ff0000;
   display: flex;

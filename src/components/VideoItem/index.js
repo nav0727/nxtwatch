@@ -7,6 +7,8 @@ import {Component} from 'react'
 import {formatDistance} from 'date-fns'
 
 import './index.css'
+import NxtContext from '../../context/NxtContext'
+import {Paragraph} from './stylecomponents'
 
 class VideoItem extends Component {
   state = {publish: ''}
@@ -42,28 +44,40 @@ class VideoItem extends Component {
     const {publish} = this.state
 
     return (
-      <Link to={`/videos/${id}`} style={{textDecoration: 'none'}}>
-        <li className="video-list-container">
-          <div>
-            <img
-              src={thumbNailUrl}
-              alt="thumbnail url"
-              className="thumb-image"
-            />
-            <div className="rows">
-              <img src={profileImageUrl} alt="profile" className="profileV" />
-              <div>
-                <p>{title}</p>
-                <p>{name}</p>
-                <div className="row">
-                  <p>{viewCount} views</p>
-                  <p>. {publish} ago</p>
+      <NxtContext.Consumer>
+        {value => {
+          const {isDark} = value
+
+          return (
+            <Link to={`/videos/${id}`} style={{textDecoration: 'none'}}>
+              <li className="video-list-container">
+                <div>
+                  <img
+                    src={thumbNailUrl}
+                    alt="thumbnail url"
+                    className="thumb-image"
+                  />
+                  <div className="rows">
+                    <img
+                      src={profileImageUrl}
+                      alt="profile"
+                      className="profileV"
+                    />
+                    <div>
+                      <Paragraph isDark={isDark}>{title}</Paragraph>
+                      <Paragraph isDark={isDark}>{name}</Paragraph>
+                      <div className="row">
+                        <Paragraph isDark={isDark}>{viewCount} views</Paragraph>
+                        <Paragraph isDark={isDark}>. {publish} ago</Paragraph>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </Link>
+              </li>
+            </Link>
+          )
+        }}
+      </NxtContext.Consumer>
     )
   }
 }

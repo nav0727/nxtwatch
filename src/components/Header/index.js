@@ -4,7 +4,10 @@ import {FaMoon} from 'react-icons/fa'
 import {TiWeatherSunny} from 'react-icons/ti'
 import Cookies from 'js-cookie'
 
+import NxtContext from '../../context/NxtContext'
+
 import './index.css'
+import {HeadContainer} from './stylecomponents'
 
 const Header = props => {
   const onLogout = () => {
@@ -18,36 +21,46 @@ const Header = props => {
     return history.replace(...props)
   }
 
-  const {toggleTheme} = props
-  const changeTheme = () => {
-    toggleTheme()
-  }
-
   return (
-    <nav className="header-container">
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-        alt="nxt watch"
-        className="nxt-watch"
-      />
+    <NxtContext.Consumer>
+      {value => {
+        const {isDark, toggleTheme} = value
 
-      <div className="header-items">
-        <button type="button" className="marg bg" onClick={changeTheme}>
-          <TiWeatherSunny className="font" />
-          <FaMoon className="font" />
-        </button>
+        const changeTheme = () => {
+          toggleTheme()
+        }
 
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
-          alt="profile"
-          className="profile marg"
-        />
+        return (
+          <HeadContainer isDark={isDark}>
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+              alt="nxt watch"
+              className="nxt-watch"
+            />
 
-        <button type="button" className="log-out" onClick={onLogout}>
-          Logout
-        </button>
-      </div>
-    </nav>
+            <div className="header-items">
+              <button type="button" className="marg bg" onClick={changeTheme}>
+                {isDark ? (
+                  <FaMoon className="moon" />
+                ) : (
+                  <TiWeatherSunny className="font" />
+                )}
+              </button>
+
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                alt="profile"
+                className="profile marg"
+              />
+
+              <button type="button" className="log-out" onClick={onLogout}>
+                Logout
+              </button>
+            </div>
+          </HeadContainer>
+        )
+      }}
+    </NxtContext.Consumer>
   )
 }
 

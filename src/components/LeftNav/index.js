@@ -6,73 +6,87 @@ import {SiYoutubegaming} from 'react-icons/si'
 import {BiListPlus} from 'react-icons/bi'
 
 import './index.css'
+import NxtContext from '../../context/NxtContext'
+import {LeftNavContainer, Paragraph} from './stylecomponents'
 
 class LeftNav extends Component {
   render() {
     return (
-      <nav className="left-container">
-        <ul>
-          <Link to="/" style={{textDecoration: 'none'}}>
-            <li>
-              <button type="button" className="btn-icon">
-                <AiFillHome className="symbol" />
-              </button>
-              <p>home</p>
-            </li>
-          </Link>
+      <NxtContext.Consumer>
+        {value => {
+          const {isDark} = value
 
-          <Link to="/trending" style={{textDecoration: 'none'}}>
-            <li>
-              <button type="button" className="btn-icon">
-                <HiFire className="symbol" />
-              </button>
-              <p>Trending</p>
-            </li>
-          </Link>
+          return (
+            <LeftNavContainer isDark={isDark}>
+              <ul>
+                <Link to="/" style={{textDecoration: 'none'}}>
+                  <li>
+                    <button type="button" className="btn-icon">
+                      <AiFillHome className={isDark ? 'symbols' : 'symbol'} />
+                    </button>
+                    <Paragraph isDark={isDark}>Home</Paragraph>
+                  </li>
+                </Link>
 
-          <Link to="/gaming" style={{textDecoration: 'none'}}>
-            <li>
-              <button type="button" className="btn-icon">
-                <SiYoutubegaming className="symbol" />
-              </button>
-              <p>Gaming</p>
-            </li>
-          </Link>
+                <Link to="/trending" style={{textDecoration: 'none'}}>
+                  <li>
+                    <button type="button" className="btn-icon">
+                      <HiFire className={isDark ? 'symbols' : 'symbol'} />
+                    </button>
+                    <Paragraph isDark={isDark}>Trending</Paragraph>
+                  </li>
+                </Link>
 
-          <Link to="/saved-videos" style={{textDecoration: 'none'}}>
-            <li>
-              <button type="button" className="btn-icon">
-                <BiListPlus className="symbol" />
-              </button>
-              <p>Saved videos</p>
-            </li>
-          </Link>
-        </ul>
+                <Link to="/gaming" style={{textDecoration: 'none'}}>
+                  <li>
+                    <button type="button" className="btn-icon">
+                      <SiYoutubegaming
+                        className={isDark ? 'symbols' : 'symbol'}
+                      />
+                    </button>
+                    <Paragraph isDark={isDark}>Gaming</Paragraph>
+                  </li>
+                </Link>
 
-        <div>
-          <p>CONTACT US</p>
+                <Link to="/saved-videos" style={{textDecoration: 'none'}}>
+                  <li>
+                    <button type="button" className="btn-icon">
+                      <BiListPlus className={isDark ? 'symbols' : 'symbol'} />
+                    </button>
+                    <Paragraph isDark={isDark}>Saved videos</Paragraph>
+                  </li>
+                </Link>
+              </ul>
 
-          <div>
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
-              alt="facebook logo"
-              className="apps"
-            />
+              <div className="support">
+                <Paragraph isDark={isDark}>CONTACT US</Paragraph>
 
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
-              alt="twitter logo"
-              className="apps"
-            />
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-              alt="linked in logo"
-              className="apps"
-            />
-          </div>
-          <p>Enjoy! Now to see your channels and recommendations!</p>
-        </div>
-      </nav>
+                <div>
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+                    alt="facebook logo"
+                    className="apps"
+                  />
+
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+                    alt="twitter logo"
+                    className="apps"
+                  />
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+                    alt="linked in logo"
+                    className="apps"
+                  />
+                </div>
+                <Paragraph isDark={isDark}>
+                  Enjoy! Now to see your channels and recommendations!
+                </Paragraph>
+              </div>
+            </LeftNavContainer>
+          )
+        }}
+      </NxtContext.Consumer>
     )
   }
 }

@@ -2,40 +2,34 @@ import {Component} from 'react'
 import Header from '../Header'
 import LeftNav from '../LeftNav'
 
-import './index.css'
 import NoSaved from '../NoSaved'
+import NxtContext from '../../context/NxtContext'
+
+import './index.css'
+import {SavedCon} from './stylecomponents'
 
 class SavedVideos extends Component {
-  state = {savedList: [], isDark: false}
-
-  onSaveList = product => {
-    this.setState(prev => ({savedList: {...prev.savedList, product}}))
-  }
-
-  renderSavedList = () => {
-    const {savedList} = this.state
-
-    return (
-      <div>{savedList.length === 0 ? <NoSaved /> : <h1>Saved Videos</h1>}</div>
-    )
-  }
-
-  toggleTheme = () => {
-    this.setState(prev => ({isDark: !prev.isDark}))
-  }
-
   render() {
-    const {isDark} = this.state
     return (
-      <div className={isDark ? 'Home-container' : 'light'}>
-        <Header toggleTheme={this.toggleTheme} />
-        <div className="row">
-          <div>
-            <LeftNav />
-          </div>
-          <div className="body-con">{this.renderSavedList()}</div>
-        </div>
-      </div>
+      <NxtContext.Consumer>
+        {value => {
+          const {savedList, isDark} = value
+
+          return (
+            <div>
+              <Header toggleTheme={this.toggleTheme} />
+              <div className="row">
+                <div className="left">
+                  <LeftNav />
+                </div>
+                <SavedCon isDark={isDark}>
+                  {savedList.length === 0 ? <NoSaved /> : <h1>No Saved</h1>}
+                </SavedCon>
+              </div>
+            </div>
+          )
+        }}
+      </NxtContext.Consumer>
     )
   }
 }

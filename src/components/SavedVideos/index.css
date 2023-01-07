@@ -9,12 +9,23 @@
   background-color: #020202;
   color: #fff;
 }
-.body-container::-webkit-scrollbar {
+.body-con::-webkit-scrollbar {
   display: none;
 }
 .head-container::-webkit-scrollbar {
   display: none;
 }
 .row {
+  display: flex;
+}
+.left {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  height: 90vh;
+  background-color: #fff;
+  flex-wrap: wrap;
+}
+.left::-webkit-scrollbar {
+  display: none;
 }

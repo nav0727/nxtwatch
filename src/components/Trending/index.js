@@ -12,6 +12,9 @@ import EmptyList from '../ListEmptyView'
 import TrendingItem from '../TrendingItem'
 
 import './index.css'
+import NxtContext from '../../context/NxtContext'
+import {TrendingContainer} from './stylecomponents'
+import {Game, GamingHead} from '../Gaming/styledcomponents'
 
 const apiConstants = {
   initial: 'INITIAL',
@@ -93,25 +96,33 @@ class Trending extends Component {
 
   render() {
     return (
-      <div className="Home-container">
-        <Header />
-        <div className="body-container">
-          <div>
-            <LeftNav />
-          </div>
-          <div className="tre">
-            <div className="col-dir">
-              <div className="game">
-                <div className="bg-dark">
-                  <HiFire />
+      <NxtContext.Consumer>
+        {value => {
+          const {isDark} = value
+
+          return (
+            <TrendingContainer isDark={isDark}>
+              <Header />
+              <div className="body-container">
+                <div>
+                  <LeftNav />
                 </div>
-                <h1>Trending</h1>
+                <div className="tre">
+                  <div className="col-dir">
+                    <Game isDark={isDark}>
+                      <div className="bg-dark">
+                        <HiFire />
+                      </div>
+                      <GamingHead isDark={isDark}>Trending</GamingHead>
+                    </Game>
+                    <div className="body">{this.renderGames()}</div>
+                  </div>
+                </div>
               </div>
-              <div className="body">{this.renderGames()}</div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </TrendingContainer>
+          )
+        }}
+      </NxtContext.Consumer>
     )
   }
 }

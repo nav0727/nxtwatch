@@ -26,9 +26,12 @@
 .font {
   font-size: 30px;
   color: #fff;
-  background-color: #020202;
 }
 .bg {
   background-color: transparent;
   border: none;
+}
+.moon {
+  color: #020202;
+  font-size: 25px;
 }

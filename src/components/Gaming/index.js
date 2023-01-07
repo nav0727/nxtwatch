@@ -11,6 +11,10 @@ import Loading from '../Loading'
 import EmptyList from '../ListEmptyView'
 import GameItem from '../GameItem'
 
+import NxtContext from '../../context/NxtContext'
+
+import {GamingHead, Game} from './styledcomponents'
+
 import './index.css'
 
 const apiConstants = {
@@ -93,23 +97,31 @@ class Gaming extends Component {
 
   render() {
     return (
-      <div className="Home-container">
-        <Header />
-        <div className="body-container">
-          <div>
-            <LeftNav />
-          </div>
-          <div className="col-dir">
-            <div className="game">
-              <div className="bg-dark">
-                <SiYoutubegaming />
+      <NxtContext.Consumer>
+        {value => {
+          const {isDark} = value
+
+          return (
+            <div className="Home-container">
+              <Header />
+              <div className="body-container">
+                <div>
+                  <LeftNav />
+                </div>
+                <div className="col-dir">
+                  <Game isDark={isDark}>
+                    <div className="bg-dark">
+                      <SiYoutubegaming />
+                    </div>
+                    <GamingHead isDark={isDark}>Gaming</GamingHead>
+                  </Game>
+                  <div className="body">{this.renderGames()}</div>
+                </div>
               </div>
-              <h1>Gaming</h1>
             </div>
-            <div className="body">{this.renderGames()}</div>
-          </div>
-        </div>
-      </div>
+          )
+        }}
+      </NxtContext.Consumer>
     )
   }
 }

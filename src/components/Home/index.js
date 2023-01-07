@@ -37,9 +37,15 @@ class Home extends Component {
                   <img
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
                     alt="nxt watch"
-                    className="nxt-watch"
+                    className="nxt-wat"
                   />
-                  <GrClose onClick={this.closeBtn} />
+                  <button
+                    type="button"
+                    onClick={this.closeBtn}
+                    className="close"
+                  >
+                    <GrClose />
+                  </button>
                 </div>
               </div>
               <p>Buy Nxt watch Premium prepaid plans with UPI</p>

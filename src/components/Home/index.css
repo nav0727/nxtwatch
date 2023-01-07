@@ -45,3 +45,14 @@
 .hide {
   display: none;
 }
+.nxt-wat {
+  height: 30px;
+}
+.close {
+  border: none;
+  background: transparent;
+}
+.close:hover {
+  background-color: #ff0b37;
+  padding: 10px;
+}

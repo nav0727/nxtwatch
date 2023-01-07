@@ -9,6 +9,8 @@ import Loading from '../Loading'
 import EmptyList from '../ListEmptyView'
 
 import './index.css'
+import NxtContext from '../../context/NxtContext'
+import {VideosContainer} from './stylecomponents'
 
 const apiConstants = {
   initial: 'INITIAL',
@@ -30,8 +32,10 @@ class Videos extends Component {
   }
 
   onChangeSearch = event => {
+    event.preventDefault()
     this.setState({searchIp: event.target.value})
   }
+  // this.get.videos() not use function calling
 
   onSearchInput = () => {
     const {searchIp} = this.state
@@ -121,7 +125,18 @@ class Videos extends Component {
   }
 
   render() {
-    return <div>{this.renderVideos()}</div>
+    return (
+      <NxtContext.Consumer>
+        {value => {
+          const {isDark} = value
+          return (
+            <VideosContainer isDark={isDark}>
+              {this.renderVideos()}
+            </VideosContainer>
+          )
+        }}
+      </NxtContext.Consumer>
+    )
   }
 }
 
