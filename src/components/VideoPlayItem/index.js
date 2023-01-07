@@ -4,13 +4,16 @@ import ReactPlayer from 'react-player'
 
 import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 
+//  import {formatDistanceToNow} from 'date-fns'
+
 import {BiListPlus} from 'react-icons/bi'
 
-import './index.css'
 import NxtContext from '../../context/NxtContext'
 
+import './index.css'
+
 class VideosPlayItem extends Component {
-  state = {isLiked: false, isDisliked: false}
+  state = {isLiked: false, isDisliked: false, isSaved: false}
 
   onLiked = () => {
     this.setState({isLiked: true, isDisliked: false})
@@ -18,6 +21,14 @@ class VideosPlayItem extends Component {
 
   onDisLiked = () => {
     this.setState({isLiked: false, isDisliked: true})
+  }
+
+  onSave = () => {
+    this.setState(prev => ({isSaved: !prev.isSaved}))
+  }
+
+  onRemove = () => {
+    this.setState(prev => ({isSaved: !prev.isSaved}))
   }
 
   render() {
@@ -39,10 +50,14 @@ class VideosPlayItem extends Component {
     return (
       <NxtContext.Consumer>
         {value => {
-          const {addToSavedList} = value
+          const {removeSaveItem, addSavedItem, savedList} = value
+          const isSaved = savedList.some(each => each.id === videoItem.id)
 
           const onSave = () => {
-            addToSavedList(id)
+            addSavedItem(videoItem)
+          }
+          const onRemove = () => {
+            removeSaveItem(id)
           }
 
           return (
@@ -57,7 +72,7 @@ class VideosPlayItem extends Component {
                 type="video/mp4"
               />
               <p>{title}</p>
-              <div className="row-order">
+              <div className="row-order" id={id}>
                 <div className="row">
                   <p>{viewCount} views</p>
                   <p>. {publishedAt} ago</p>
@@ -74,7 +89,7 @@ class VideosPlayItem extends Component {
                     </button>
                     <p
                       onClick={this.onLiked}
-                      className={isLiked ? 'liked' : 'symbol'}
+                      className={isLiked ? 'like-text' : 'not-like'}
                     >
                       Like
                     </p>
@@ -93,16 +108,43 @@ class VideosPlayItem extends Component {
 
                     <p
                       onClick={this.onDisLiked}
-                      className={isDisliked ? 'liked' : 'symbol'}
+                      className={isDisliked ? 'like-text' : 'not-like'}
                     >
                       Dislike
                     </p>
                   </div>
                   <div className="row">
-                    <button type="button" className="btn-icon" onClick={onSave}>
-                      <BiListPlus className="symbol" />
-                    </button>
-                    <p>Save</p>
+                    {isSaved ? (
+                      <>
+                        <button
+                          type="button"
+                          className="btn-icon"
+                          onClick={onRemove}
+                        >
+                          <BiListPlus
+                            className={isSaved ? 'liked' : 'symbol'}
+                          />
+                        </button>
+                        <p className={isSaved ? 'like-text' : 'not-like'}>
+                          Saved
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          type="button"
+                          className="btn-icon"
+                          onClick={onSave}
+                        >
+                          <BiListPlus
+                            className={isSaved ? 'liked' : 'symbol'}
+                          />
+                        </button>
+                        <p className={isSaved ? 'like-text' : 'not-like'}>
+                          Save
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

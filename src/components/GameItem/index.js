@@ -1,8 +1,9 @@
 import {Link} from 'react-router-dom'
 
-import './index.css'
 import NxtContext from '../../context/NxtContext'
 import {GameListItem} from './styledcomponents'
+
+import './index.css'
 
 const GameItem = props => {
   const {videoItem} = props

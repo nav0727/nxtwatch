@@ -3,8 +3,9 @@ import React from 'react'
 const NxtContext = React.createContext({
   savedList: [],
   isDark: true,
-  addToSavedList: () => {},
-  removeCartItem: () => {},
+  isSaved: false,
+  removeSaveItem: () => {},
+  addSavedItem: () => {},
   toggleTheme: () => {},
 })
 

@@ -20,7 +20,7 @@
   flex-direction: column;
 }
 .symbol {
-  font-size: 25px;
+  font-size: 20px;
   color: #fff;
 }
 .video-margin {
@@ -28,5 +28,17 @@
 }
 .liked {
   color: #00306e;
-  font-size: 25px;
+  font-size: 20px;
+}
+
+.not-like {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.like-text {
+  color: #00306e;
+  font-size: 14px;
+  font-weight: 500;
 }

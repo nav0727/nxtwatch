@@ -16,22 +16,20 @@ import NxtContext from './context/NxtContext'
 class App extends Component {
   state = {isDark: true, savedList: []}
 
-  addToSavedList = item => {
+  addSavedItem = videoItem => {
     const {savedList} = this.state
-    const videosItems = savedList.find(each => each.id === item.id)
+    this.setState({
+      savedList: [...savedList, videoItem],
+    })
+    console.log(savedList)
+  }
 
-    if (videosItems) {
-      this.setState(prev => ({
-        savedList: prev.cartList.map(each => {
-          if (each.id === videosItems.id) {
-            return {...each}
-          }
-          return each
-        }),
-      }))
-    } else {
-      this.setState(prev => ({cartList: [...prev.cartList, item]}))
-    }
+  removeSaveItem = id => {
+    const {savedList} = this.state
+
+    this.setState({
+      savedList: savedList.filter(each => each.id !== id),
+    })
   }
 
   toggleTheme = () => {
@@ -47,7 +45,8 @@ class App extends Component {
           value={{
             isDark,
             toggleTheme: this.toggleTheme,
-            addToSavedList: this.addToSavedList,
+            addSavedItem: this.addSavedItem,
+            removeSaveItem: this.removeSaveItem,
             savedList,
           }}
         >

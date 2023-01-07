@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components'
 
-export const SavedCon = styled.nav`
+export const SavedCon = styled.div`
   background-color: ${props => (props.isDark ? '#f0f0f0' : '#020202')};
   color: ${props => (props.isDark ? '#020202' : '#f4f4f4')};
 
