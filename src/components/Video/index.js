@@ -5,12 +5,12 @@ import {BiSearch} from 'react-icons/bi'
 
 import VideoItem from '../VideoItem'
 import Failure from '../Failure'
-import Loading from '../Loading'
 import EmptyList from '../ListEmptyView'
 
 import './index.css'
 import NxtContext from '../../context/NxtContext'
-import {VideosContainer} from './stylecomponents'
+import {VideosContainer, InPutBar} from './stylecomponents'
+import Loading from '../Loading'
 
 const apiConstants = {
   initial: 'INITIAL',
@@ -85,18 +85,6 @@ class Videos extends Component {
 
     return (
       <div>
-        <div className="search-container">
-          <input
-            type="search"
-            placeholder="Search"
-            className="input"
-            onChange={this.onChangeSearch}
-          />
-          <button type="button" onClick={this.onSearchInput}>
-            <BiSearch className="search-icon" />
-          </button>
-        </div>
-
         {videosList.length > 0 ? (
           <ul className="video-list">
             {videosList.map(each => (
@@ -131,6 +119,19 @@ class Videos extends Component {
           const {isDark} = value
           return (
             <VideosContainer isDark={isDark}>
+              <div className="search-container">
+                <InPutBar
+                  isDark={isDark}
+                  type="search"
+                  placeholder="Search"
+                  className="input"
+                  onChange={this.onChangeSearch}
+                />
+                <button type="button" onClick={this.onSearchInput}>
+                  <BiSearch className="search-icon" />
+                </button>
+              </div>
+
               {this.renderVideos()}
             </VideosContainer>
           )

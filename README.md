@@ -498,11 +498,11 @@ console.log(formatDistanceToNow(new Date(2021, 8, 20)))
 
 - Wrap the `Loader` component with an HTML container element and add the `data-testid` attribute value as `loader` to it
 
-  ```jsx
+  ` ``jsx
   <div className="loader-container" data-testid="loader">
-    <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
-  </div>
-  ```
+     <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+   </div>
+   ```
 
 - The HTML button element in Home Route has the `data-testid` attribute value as `searchButton` to it
 

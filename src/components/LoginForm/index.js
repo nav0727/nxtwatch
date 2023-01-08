@@ -60,7 +60,7 @@ class LoginForm extends Component {
   }
 
   renderLogin = () => {
-    const {isShow} = this.state
+    const {isShow, errorMsg, errorStatus} = this.state
     return (
       <div className="login">
         <img
@@ -93,19 +93,14 @@ class LoginForm extends Component {
           <button type="submit" className="login-btn">
             Login
           </button>
+          {errorStatus && <p>* {errorMsg}</p>}
         </form>
       </div>
     )
   }
 
   render() {
-    const {errorMsg, errorStatus} = this.state
-    return (
-      <div className="login-bg">
-        {this.renderLogin()}
-        {errorStatus && <p>* {errorMsg}</p>}
-      </div>
-    )
+    return <div className="login-bg">{this.renderLogin()}</div>
   }
 }
 

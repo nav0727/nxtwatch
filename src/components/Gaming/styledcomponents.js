@@ -12,3 +12,16 @@ export const Game = styled.div`
   padding-left: 5vw;
   background-color: ${props => (props.isDark ? '#f0f0f0' : '#181818')};
 `
+
+export const GamingBody = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+  width: 100%;
+  background-color: ${props => (props.isDark ? '#f0f0f0' : '#020202')};
+  color: ${props => (props.isDark ? '#181818' : '#fff')};
+  height: 90vh;
+  flex-direction: column;
+  
+  }
+`

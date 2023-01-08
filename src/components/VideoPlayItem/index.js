@@ -4,8 +4,6 @@ import ReactPlayer from 'react-player'
 
 import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 
-//  import {formatDistanceToNow} from 'date-fns'
-
 import {BiListPlus} from 'react-icons/bi'
 
 import NxtContext from '../../context/NxtContext'

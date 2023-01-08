@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+
 import NxtContext from '../../context/NxtContext'
 
 import {ParagraphEl} from './styledcomponents'

@@ -4,6 +4,7 @@ import NxtContext from '../../context/NxtContext'
 import {GameListItem} from './styledcomponents'
 
 import './index.css'
+import {Paragraph} from '../VideoItem/stylecomponents'
 
 const GameItem = props => {
   const {videoItem} = props
@@ -22,8 +23,8 @@ const GameItem = props => {
                   alt="thumbnail url"
                   className="thumb-img"
                 />
-                <p>{title}</p>
-                <p>{viewCount} views</p>
+                <Paragraph isDark={isDark}>{title}</Paragraph>
+                <Paragraph>{viewCount} views</Paragraph>
               </div>
             </GameListItem>
           </Link>

@@ -13,7 +13,7 @@ import GameItem from '../GameItem'
 
 import NxtContext from '../../context/NxtContext'
 
-import {GamingHead, Game} from './styledcomponents'
+import {GamingHead, Game, GamingBody} from './styledcomponents'
 
 import './index.css'
 
@@ -115,7 +115,7 @@ class Gaming extends Component {
                     </div>
                     <GamingHead isDark={isDark}>Gaming</GamingHead>
                   </Game>
-                  <div className="body">{this.renderGames()}</div>
+                  <GamingBody isDark={isDark}>{this.renderGames()}</GamingBody>
                 </div>
               </div>
             </div>

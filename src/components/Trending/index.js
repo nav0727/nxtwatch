@@ -13,7 +13,7 @@ import TrendingItem from '../TrendingItem'
 
 import './index.css'
 import NxtContext from '../../context/NxtContext'
-import {TrendingContainer} from './stylecomponents'
+import {TrendingContainer, TrendingBody} from './stylecomponents'
 import {Game, GamingHead} from '../Gaming/styledcomponents'
 
 const apiConstants = {
@@ -24,7 +24,7 @@ const apiConstants = {
 }
 
 class Trending extends Component {
-  state = {gamesList: [], apiStatus: apiConstants.initial}
+  state = {trendingList: [], apiStatus: apiConstants.initial}
 
   componentDidMount() {
     this.getVideos()
@@ -54,7 +54,7 @@ class Trending extends Component {
       }))
       // console.log(updateVideos)
       this.setState(
-        {gamesList: updateVideos, apiStatus: apiConstants.success},
+        {trendingList: updateVideos, apiStatus: apiConstants.success},
         this.getVideos,
       )
     } else {
@@ -62,14 +62,14 @@ class Trending extends Component {
     }
   }
 
-  renderGame = () => {
-    const {gamesList} = this.state
+  renderTrending = () => {
+    const {trendingList} = this.state
 
     return (
       <div>
-        {gamesList.length > 0 ? (
+        {trendingList.length > 0 ? (
           <ul className="trend">
-            {gamesList.map(each => (
+            {trendingList.map(each => (
               <TrendingItem trendingItem={each} key={each.id} />
             ))}
           </ul>
@@ -80,11 +80,11 @@ class Trending extends Component {
     )
   }
 
-  renderGames = () => {
+  renderTrend = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiConstants.success:
-        return this.renderGame()
+        return this.renderTrending()
       case apiConstants.failure:
         return <Failure />
       case apiConstants.inProgress:
@@ -115,7 +115,9 @@ class Trending extends Component {
                       </div>
                       <GamingHead isDark={isDark}>Trending</GamingHead>
                     </Game>
-                    <div className="body">{this.renderGames()}</div>
+                    <TrendingBody isDark={isDark} className="body">
+                      {this.renderTrend()}
+                    </TrendingBody>
                   </div>
                 </div>
               </div>

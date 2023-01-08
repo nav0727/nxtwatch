@@ -15,10 +15,10 @@ const Header = props => {
 
     const JWTToken = Cookies.remove('jwt_token')
     console.log(JWTToken)
-    if (JWTToken === undefined) {
-      return history.replace('/login')
+    if (JWTToken !== undefined) {
+      return history.replace('/')
     }
-    return history.replace(...props)
+    return history.replace('/')
   }
 
   return (
